@@ -18,15 +18,22 @@ minus.addEventListener('click', () => counter.textContent--);
 //like button
 heart.addEventListener('click', handleLikes);
 
+//liker functionality
 function handleLikes() {
     const count = counter.textContent;
 
-    numberScores[count] = 1;
-    const li = document.createElement('li');
-    li.textContent = `${count} has been liked ${numberScores[count]} time(s)`;
-    likesList.appendChild(li);
-
-    console.log(numberScores);
+    //if it was already liked
+    if (numberScores[count]) {
+        numberScores[count]++;
+        document.querySelector(`#like-${count}`).textContent = `${count} has been liked ${numberScores[count]} times`
+    } else {
+        //otherwise create the <li>
+        numberScores[count] = 1;
+        const li = document.createElement('li');
+        li.id = `like-${count}`;
+        li.textContent = `${count} has been liked 1 time`;
+        likesList.appendChild(li);
+    }
 }
 
 
