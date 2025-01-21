@@ -6,17 +6,21 @@ const heart = document.querySelector('#heart');
 const pause = document.querySelector('#pause');
 const likesList = document.querySelector('.likes');
 
-const numberScores = {};
-
 //auto counter
-setInterval(() => counter.textContent++, 1000);
+const intervalId = setInterval(() => counter.textContent++, 1000);
 
 //plus-minus buttons
 plus.addEventListener('click', () => counter.textContent++)
 minus.addEventListener('click', () => counter.textContent--);
 
+
+
+//LIKER
+
 //like button
 heart.addEventListener('click', handleLikes);
+
+const numberScores = {};
 
 //liker functionality
 function handleLikes() {
