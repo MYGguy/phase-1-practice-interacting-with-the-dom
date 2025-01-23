@@ -6,6 +6,9 @@ const heart = document.querySelector('#heart');
 const pause = document.querySelector('#pause');
 const likesList = document.querySelector('.likes');
 const buttons = document.querySelectorAll('button');
+const submitComment = document.querySelector('#submit');
+const commentInput = document.querySelector('#comment-input');
+const comments = document.querySelector('#list');
 
 //auto counter
 let intervalId = setInterval(() => counter.textContent++, 1000);
@@ -71,3 +74,11 @@ function handleLikes() {
         likesList.appendChild(li);
     }
 }
+
+//commentor
+submitComment.addEventListener('click', (e) => {
+    e.preventDefault();
+    const p = document.createElement('p');
+    p.textContent = commentInput.value;
+    comments.appendChild(p);
+})
