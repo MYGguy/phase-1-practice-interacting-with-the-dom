@@ -5,6 +5,7 @@ const minus = document.querySelector('#minus');
 const heart = document.querySelector('#heart');
 const pause = document.querySelector('#pause');
 const likesList = document.querySelector('.likes');
+const buttons = document.querySelectorAll('button');
 
 //auto counter
 let intervalId = setInterval(() => counter.textContent++, 1000);
@@ -20,14 +21,28 @@ let playing = true;
 function pauseFunction() {
     if (playing) {
         //pause it
+        playing = false;
         pause.textContent = ' play ';
         clearInterval(intervalId);
-        playing = false;
+
+        //disable buttons
+        buttons.forEach(button => {
+            if (button.id !== 'pause') {
+                button.disabled = true;
+            }
+        })
     } else {
         //resume playing
+        playing = true;
         pause.textContent = ' pause ';
         intervalId = setInterval(() => counter.textContent++, 1000);
-        playing = true;
+
+        //enable buttons
+        buttons.forEach(button => {
+            if (button.id !== 'pause') {
+                button.disabled = false;
+            }
+        })
     }
 };
 
