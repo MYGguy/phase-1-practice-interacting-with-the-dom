@@ -7,12 +7,29 @@ const pause = document.querySelector('#pause');
 const likesList = document.querySelector('.likes');
 
 //auto counter
-const intervalId = setInterval(() => counter.textContent++, 1000);
+let intervalId = setInterval(() => counter.textContent++, 1000);
 
 //plus-minus buttons
 plus.addEventListener('click', () => counter.textContent++)
 minus.addEventListener('click', () => counter.textContent--);
 
+//pause-play button functionality
+pause.addEventListener('click', pauseFunction);
+let playing = true;
+
+function pauseFunction() {
+    if (playing) {
+        //pause it
+        pause.textContent = ' play ';
+        clearInterval(intervalId);
+        playing = false;
+    } else {
+        //resume playing
+        pause.textContent = ' pause ';
+        intervalId = setInterval(() => counter.textContent++, 1000);
+        playing = true;
+    }
+};
 
 
 //LIKER
